@@ -1,4 +1,20 @@
-# Install-MongoDB
+# How To Install Nginx(Web Server) on Ubuntu
+```
+sudo apt update
+sudo apt install nginx
+```
+```
+sudo ufw app list
+```
+```
+sudo ufw allow 'Nginx HTTP'
+```
+```
+systemctl status nginx
+```
+ 
+
+# How To Install MongoDB  on Ubuntu
 
 ### Import the public key used by the package management system
 ```
