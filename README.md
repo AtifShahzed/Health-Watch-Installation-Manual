@@ -1,4 +1,4 @@
-# Install-MongoFB
+# Install-MongoDB
 
 ### Import the public key used by the package management system
 ```
