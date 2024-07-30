@@ -36,9 +36,10 @@ sudo apt-get update
 ```
 ### Install the MongoDB packages
 ```
-sudo apt-get install -y mongodb-org=7.0.12 mongodb-org-database=7.0.12 mongodb-org-server=7.0.12 mongodb-mongosh=7.0.12 mongodb-org-mongos=7.0.12 mongodb-org-tools=7.0.12
-
-
+sudo apt-get install -y mongodb-org
+```
+### Set Selections
+```
 echo "mongodb-org hold" | sudo dpkg --set-selections
 echo "mongodb-org-database hold" | sudo dpkg --set-selections
 echo "mongodb-org-server hold" | sudo dpkg --set-selections
