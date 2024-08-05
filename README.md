@@ -96,7 +96,7 @@ sudo nano /etc/systemd/system/HealthWatch_api.service
 Description=HealthWatch api Service
 [Service]
 WorkingDirectory=/var/www/healthwatch_api
-ExecStart=ExecStart=/usr/bin/dotnet /var/www/healthwatch_api/HealthWatch.dll 
+ExecStart=/usr/bin/dotnet /var/www/healthwatch_api/HealthWatch.dll 
 Restart=always
 RestartSec=10
 KillSignal=SIGINT
