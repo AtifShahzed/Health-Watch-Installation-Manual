@@ -130,7 +130,7 @@ location / {
     }
 
 ```
-#### Deployment FHIR Server System Service
+# Deployment FHIR Server System Service
 ```
 sudo systemctl stop HealthWatch_api.service
 cd /var/www/ &&
