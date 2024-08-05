@@ -89,3 +89,58 @@ sudo apt-get update && \
 ```
 sudo apt-get install -y dotnet-runtime-6.0
 ```
+#### FHIR Server System Service
+```
+sudo nano /etc/systemd/system/HealthWatch_api.service
+[Unit]
+Description=HealthWatch api Service
+[Service]
+WorkingDirectory=/var/www/healthwatch_api
+ExecStart=ExecStart=/usr/bin/dotnet /var/www/healthwatch_api/HealthWatch.dll 
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=HealthWatch_api
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl enable HealthWatch_api.service
+sudo systemctl stop HealthWatch_api.service
+sudo systemctl start HealthWatch_api.service
+sudo systemctl status HealthWatch_api.service
+```
+
+#### Reverse Proxy FHIR Server System Service
+```
+location / {
+        proxy_pass         http://127.0.0.1:9003;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+
+```
+#### Deployment FHIR Server System Service
+```
+sudo systemctl stop HealthWatch_api.service
+cd /var/www/ &&
+rm -rf  healthwatch_api &&
+mkdir  healthwatch_api &&
+cd /root/ &&
+unzip publish.zip -d  /var/www/healthwatch_api/
+sudo mv /var/www/healthwatch_api/publish/* /var/www/healthwatch_api/
+sudo systemctl enable HealthWatch_api.service
+sudo systemctl stop HealthWatch_api.service
+sudo systemctl start HealthWatch_api.service
+sudo systemctl status HealthWatch_api.service
+```
