@@ -48,7 +48,7 @@ echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 ```
 
-## Run MongoDB Community Edition
+# Run MongoDB Community Edition
 ```
 ps --no-headers -o comm 1
 ```
@@ -72,7 +72,7 @@ sudo systemctl stop mongod
 sudo systemctl restart mongod
 ```
 
-#### Install .NET SDK or .NET Runtime on Ubuntu
+# Install .NET SDK or .NET Runtime on Ubuntu
 ```
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
@@ -89,7 +89,7 @@ sudo apt-get update && \
 ```
 sudo apt-get install -y dotnet-runtime-6.0
 ```
-#### FHIR Server System Service
+# FHIR Server System Service
 ```
 sudo nano /etc/systemd/system/HealthWatch_api.service
 [Unit]
@@ -116,7 +116,7 @@ sudo systemctl start HealthWatch_api.service
 sudo systemctl status HealthWatch_api.service
 ```
 
-#### Reverse Proxy FHIR Server System Service
+# Reverse Proxy FHIR Server System Service
 ```
 location / {
         proxy_pass         http://127.0.0.1:9003;
